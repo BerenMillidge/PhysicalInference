@@ -106,6 +106,7 @@ function run_experiment(N,Repeats, T,dt, lr,experiments)
             E = zeros(RelaxT, Relaxations) #energies over one relaxation
             Eend = zeros(Relaxations,1) # energies at end of each relaxation
             for r = 1:Relaxations
+                print("Relaxation ", r)
                 x = randn(N,1)
                 v = randn(N,1) #initial random states
                 x,v,DsL,PE,KE = run_1d_rod_springs(K,L,x,v,gamma,RelaxT,dt)
@@ -172,3 +173,4 @@ T = 5
 All_eend,trajxs, trajvs = run_experiment(N,Repeats, T,dt, lr,experiments)
 All_eend
 trajxs
+scatter([1:200],All_eend[1][1])
